@@ -1,8 +1,19 @@
 # Airstream
 
-Real-time pipeline that streams weather data (NWS API) and live flight data (OpenSky)
-through Kafka, runs data quality checks, and feeds a live map that shows flights over
-current conditions.
+Real-time data pipeline: flights (OpenSky) and weather (NWS API) streamed through Kafka,
+validated by a data quality layer, stored, joined, and shown on a live map.
+
+## End goal (context only - don't build ahead)
+- Two sources, OpenSky (flights) and NWS (weather), polled on schedules.
+- Producers push raw records into Kafka topics.
+- **The data quality layer is the core of the project, not an add-on.** It validates every
+  record for schema, value ranges, freshness, completeness, and duplicates. Bad records go to
+  a quarantine topic rather than being dropped silently, and failure counts are tracked over time.
+- Clean data is stored and joined: each flight is matched to current weather near it.
+- A live map shows flights over current conditions.
+- Keep ingestion, validation, and storage as separate layers in the code.
+
+**Current stage:** OpenSky client only.
 
 ## Planned extension
 Wildfire smoke segmentation on GOES satellite imagery, labeled with NOAA HMS smoke
@@ -13,6 +24,8 @@ polygons and NASA FIRMS hotspots.
 - Priorities: tests, CI/CD, a clean README.
 
 ## Working agreements
+- Keep scaffolding minimal and step by step. Scaffold only what the current stage needs,
+  and don't overdo it.
 - Claude does general scaffolding only. The owner writes the core logic, starting with the
   OpenSky API client: token auth, then bounding-box queries, then studying the response.
   Leave `TODO` stubs with `NotImplementedError` instead of implementing it.
