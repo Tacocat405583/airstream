@@ -19,7 +19,6 @@ class Settings(BaseSettings):
     nws_api_url: str = "https://api.weather.gov"
     nws_user_agent: str = "airstream (you@example.com)"
 
-
     poll_interval_seconds: int = 15
 
 
