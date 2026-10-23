@@ -13,16 +13,17 @@ polygons and NASA FIRMS hotspots.
 - Priorities: tests, CI/CD, a clean README.
 
 ## Working agreements
-- Claude does scaffolding only. The owner writes the core logic, starting with the
+- Claude does general scaffolding only. The owner writes the core logic, starting with the
   OpenSky API client: token auth, then bounding-box queries, then studying the response.
   Leave `TODO` stubs with `NotImplementedError` instead of implementing it.
+- The owner builds the streaming layer (Kafka producers/consumers, docker-compose) from
+  scratch. Do not scaffold it.
 - Commit after every change.
 - Do NOT add Claude as a co-author or contributor in commits or PRs.
 
 ## Layout
 - `src/airstream/clients/` - API clients (OpenSky, NWS)
 - `src/airstream/models.py` - shared data models
-- `src/airstream/streaming/` - Kafka producers and consumers
 - `src/airstream/quality/` - data quality checks
 - `scripts/` - exploration scripts for poking at raw API responses
 - `tests/` - pytest suite
@@ -31,4 +32,3 @@ polygons and NASA FIRMS hotspots.
 - Install: `pip install -e ".[dev]"`
 - Tests: `pytest`
 - Lint: `ruff check .`
-- Local Kafka: `docker compose up -d`
