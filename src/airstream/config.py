@@ -19,10 +19,6 @@ class Settings(BaseSettings):
     nws_api_url: str = "https://api.weather.gov"
     nws_user_agent: str = "airstream (you@example.com)"
 
-    # Kafka
-    kafka_bootstrap_servers: str = "localhost:9092"
-    kafka_flights_topic: str = "flights.raw"
-    kafka_weather_topic: str = "weather.raw"
 
     poll_interval_seconds: int = 15
 
