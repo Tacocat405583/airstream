@@ -16,6 +16,9 @@ polygons and NASA FIRMS hotspots.
 - Claude does general scaffolding only. The owner writes the core logic, starting with the
   OpenSky API client: token auth, then bounding-box queries, then studying the response.
   Leave `TODO` stubs with `NotImplementedError` instead of implementing it.
+- For core logic, the owner writes the code and Claude reviews: explain concepts, point out
+  bugs, suggest fixes, but don't rewrite the owner's implementation unless asked.
+- Runs locally in `.venv` for now; Docker comes when Kafka is added.
 - The owner builds the streaming layer (Kafka producers/consumers, docker-compose) from
   scratch. Do not scaffold it.
 - Commit after every change.
