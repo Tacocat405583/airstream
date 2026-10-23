@@ -3,7 +3,11 @@
 Implementation order:
   1. fetch_token()  - OAuth2 client-credentials token from the auth server
   2. get_states()   - hit /states/all with a BoundingBox
-  3. study the raw response (scripts/explore_opensky.py), then parse into FlightState
+  3. study the raw response (scripts/explore_opensky.py)
+
+This is the ingestion layer: fetch and pass records along. No validation here.
+Never filter, fix, or drop records in the client; that's the quality layer's job,
+so bad records can be quarantined and counted.
 """
 
 from __future__ import annotations
@@ -49,7 +53,11 @@ class OpenSkyClient:
         raise NotImplementedError
 
     def get_states(self, bbox: BoundingBox | None = None) -> list[FlightState]:
-        """TODO: parse get_states_raw()["states"] into FlightState objects."""
+        """TODO: map each raw state vector to named fields.
+
+        Pure reshaping only: no checks, no dropping. Anything malformed must still come
+        out of here so the quality layer can see it.
+        """
         raise NotImplementedError
 
     def close(self) -> None:

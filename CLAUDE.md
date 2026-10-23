@@ -12,6 +12,8 @@ validated by a data quality layer, stored, joined, and shown on a live map.
 - Clean data is stored and joined: each flight is matched to current weather near it.
 - A live map shows flights over current conditions.
 - Keep ingestion, validation, and storage as separate layers in the code.
+- **Never fold validation into ingestion.** Clients fetch and reshape only. They never filter,
+  fix, or drop records. Every validation decision lives in the quality layer.
 
 **Current stage:** OpenSky client only.
 
