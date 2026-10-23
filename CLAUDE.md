@@ -19,12 +19,15 @@ polygons and NASA FIRMS hotspots.
 - The owner builds the streaming layer (Kafka producers/consumers, docker-compose) from
   scratch. Do not scaffold it.
 - Commit after every change.
+- Keep `docs/decisions.md` up to date: tick off progress items and add an entry
+  for each meaningful decision (newest at the top). It's the owner's project memory.
 - Do NOT add Claude as a co-author or contributor in commits or PRs.
 
 ## Layout
 - `src/airstream/clients/` - API clients (OpenSky, NWS)
 - `src/airstream/models.py` - shared data models
 - `src/airstream/quality/` - data quality checks
+- `docs/decisions.md` - decision log and progress tracker
 - `scripts/` - exploration scripts for poking at raw API responses
 - `tests/` - pytest suite
 
