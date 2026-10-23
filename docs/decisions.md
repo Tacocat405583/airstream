@@ -18,6 +18,7 @@ A running record of what I've built, what I chose, and why. Newest entries at th
 ## Progress
 
 - [x] Repo scaffold: packaging, CI, tests, README (2026-10-22)
+- [ ] OpenSky: create an API client on the account page (client_id / client_secret)
 - [ ] OpenSky: get a token
 - [ ] OpenSky: bounding-box query + save raw snapshots
 - [ ] OpenSky: study the response (null rates, update frequency, credit cost)
@@ -36,6 +37,13 @@ A running record of what I've built, what I chose, and why. Newest entries at th
 - How do I join fast-moving flight data to slower-updating hourly weather?
 
 ---
+
+## 2026-10-22 - Run locally now, containerize later
+**Context:** Deciding whether to use Docker from day one.
+**Decision:** Develop in a local venv for now. Add Docker when the Kafka layer comes in.
+**Alternatives:** Docker from the start; local only forever.
+**Why:** Keeps the API work simple while I'm learning the data. Docker matters once there are
+multiple services (Kafka, producers, consumers) to run together.
 
 ## 2026-10-22 - Build the streaming layer myself
 **Context:** The initial scaffold included Kafka producer/consumer stubs and a docker-compose file.
@@ -57,6 +65,6 @@ official Python client.
 
 ## 2026-10-22 - Limit queries to a SoCal bounding box
 **Context:** `/states/all` with no box returns the whole world.
-**Decision:** Query a Southern California box (lamin/lomin/lamax/lomax).
+**Decision:** Query a Southern California box: lat 32.5 to 35.0, lon -120.5 to -114.0.
 **Why:** Fewer API credits, smaller payloads, and it fits the project question about how weather
 and wildfire smoke affect air traffic over SoCal.
