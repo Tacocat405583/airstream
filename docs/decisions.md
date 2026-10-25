@@ -17,7 +17,7 @@ A running record of what I've built, what I chose, and why. Newest entries at th
 
 ## Progress
 
-- [x] Repo scaffold: packaging, CI, tests, README (2026-10-22)
+- [x] Repo tooling: packaging, CI, README (2026-10-22)
 - [ ] OpenSky: create an API client on the account page (client_id / client_secret)
 - [ ] OpenSky: get a token
 - [ ] OpenSky: bounding-box query + save raw snapshots
@@ -37,6 +37,14 @@ A running record of what I've built, what I chose, and why. Newest entries at th
 - How do I join fast-moving flight data to slower-updating hourly weather?
 
 ---
+
+## 2026-10-24 - Write all the code myself
+**Context:** The initial scaffold had code stubs (client classes, models, quality checks, tests)
+with class names, method signatures, and TODOs already chosen.
+**Decision:** Removed all code stubs and runtime dependencies. Kept only the tooling (pyproject,
+CI, README, this log). I'll design and write every class and module from a blank file.
+**Why:** Interviews focus on OOP and design, not just algorithms. I need to be able to explain
+why every class and method exists, and that only works if I made those choices myself.
 
 ## 2026-10-22 - Run locally now, containerize later
 **Context:** Deciding whether to use Docker from day one.
