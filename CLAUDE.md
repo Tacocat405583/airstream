@@ -44,6 +44,7 @@ polygons and NASA FIRMS hotspots.
 - `src/airstream/` - source package (owner-designed)
 - `tests/` - pytest suite (owner-written)
 - `docs/decisions.md` - decision log and progress tracker
+- `docs/helper.md` - owner's learning guide: coding from docs, resource links, concepts
 
 ## Commands
 - Install: `pip install -e ".[dev]"`
