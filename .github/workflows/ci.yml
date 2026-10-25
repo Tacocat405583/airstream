@@ -19,4 +19,5 @@ jobs:
           cache: pip
       - run: pip install -e ".[dev]"
       - run: ruff check .
-      - run: pytest -q
+      # exit code 5 = no tests collected yet; treat as pass until tests exist
+      - run: pytest -q || [ $? -eq 5 ]
