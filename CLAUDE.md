@@ -27,28 +27,23 @@ polygons and NASA FIRMS hotspots.
 - Priorities: tests, CI/CD, a clean README.
 
 ## Working agreements
-- Keep scaffolding minimal and step by step. Scaffold only what the current stage needs,
-  and don't overdo it.
-- Claude does general scaffolding only. The owner writes the core logic, starting with the
-  OpenSky API client: token auth, then bounding-box queries, then studying the response.
-  Leave `TODO` stubs with `NotImplementedError` instead of implementing it.
-- For core logic, the owner writes the code and Claude reviews: explain concepts, point out
-  bugs, suggest fixes, but don't rewrite the owner's implementation unless asked.
+- **The owner writes all source code, tests included.** That covers class design, module
+  structure, naming, and library choices. Interviews focus on OOP, so the design must be theirs.
+- Claude does NOT write code stubs, skeletons, class outlines, or suggested method names in
+  the repo. Claude's role: review the owner's code, explain concepts, answer questions, and
+  point out bugs. Don't hand over full implementations unless explicitly asked.
+- Setup and tooling files (pyproject, CI, .gitignore, README, docs) are fine for Claude to
+  maintain when asked.
 - Runs locally in `.venv` for now; Docker comes when Kafka is added.
-- The owner builds the streaming layer (Kafka producers/consumers, docker-compose) from
-  scratch. Do not scaffold it.
 - Commit after every change.
 - Keep `docs/decisions.md` up to date: tick off progress items and add an entry
   for each meaningful decision (newest at the top). It's the owner's project memory.
 - Do NOT add Claude as a co-author or contributor in commits or PRs.
 
 ## Layout
-- `src/airstream/clients/` - API clients (OpenSky, NWS)
-- `src/airstream/models.py` - shared data models
-- `src/airstream/quality/` - data quality checks
+- `src/airstream/` - source package (owner-designed)
+- `tests/` - pytest suite (owner-written)
 - `docs/decisions.md` - decision log and progress tracker
-- `scripts/` - exploration scripts for poking at raw API responses
-- `tests/` - pytest suite
 
 ## Commands
 - Install: `pip install -e ".[dev]"`
