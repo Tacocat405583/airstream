@@ -4,7 +4,7 @@ A real-time pipeline that streams weather data from the National Weather Service
 live flight data from OpenSky, runs data quality checks, and feeds a live map that shows
 flights over current conditions.
 
-> Status: early scaffolding. API clients are being built now; the streaming layer comes next.
+> Status: early development. Building the OpenSky client first.
 
 ## Architecture
 
@@ -13,16 +13,6 @@ OpenSky /states/all ─┐
                      ├─> producers ─> Kafka ─> consumers ─> quality checks ─> live map
 NWS observations ────┘
 ```
-
-## Project layout
-
-| Path | Purpose |
-| --- | --- |
-| `src/airstream/clients/` | OpenSky and NWS API clients |
-| `src/airstream/models.py` | Shared models (`BoundingBox`, `FlightState`, `WeatherObservation`) |
-| `src/airstream/quality/` | Record-level data quality checks |
-| `scripts/` | One-off scripts for exploring raw API responses |
-| `tests/` | pytest suite |
 
 ## Setup
 
@@ -41,7 +31,6 @@ to get a `client_id` and `client_secret`.
 ```bash
 pytest          # run tests
 ruff check .    # lint
-python scripts/explore_opensky.py --bbox 32.5 -120.5 35.0 -114.0   # dump a SoCal snapshot
 ```
 
 ## Roadmap
