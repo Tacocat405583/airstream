@@ -8,16 +8,11 @@ version = "0.1.0"
 description = "Real-time weather + flight pipeline (NWS + OpenSky) over Kafka"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = [
-    "httpx>=0.27",
-    "pydantic>=2.6",
-    "pydantic-settings>=2.2",
-]
+dependencies = []
 
 [project.optional-dependencies]
 dev = [
     "pytest>=8.0",
-    "respx>=0.21",
     "ruff>=0.5",
     "mypy>=1.10",
 ]
