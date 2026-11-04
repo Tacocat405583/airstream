@@ -11,3 +11,6 @@ build/
 .ruff_cache/
 .coverage
 data/raw/
+
+# Secrets
+credentials.json
